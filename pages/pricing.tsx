@@ -5,9 +5,14 @@ import { pricingTiers } from "@/lib/pricing-data";
 import PricingToggle from "@/components/pricing/PricingToggle";
 import PricingCard from "@/components/pricing/PricingCard";
 import ExecutionCredits from "@/components/pricing/ExecutionCredits";
+import ExecutionCalculator from "@/components/pricing/ExecutionCalculator";
 import MarketplacePricing from "@/components/pricing/MarketplacePricing";
 import BundlePricing from "@/components/pricing/BundlePricing";
 import ComparisonTable from "@/components/pricing/ComparisonTable";
+import FeatureMatrix from "@/components/pricing/FeatureMatrix";
+import ROICalculator from "@/components/pricing/ROICalculator";
+import CompareToHiring from "@/components/pricing/CompareToHiring";
+import SocialProof from "@/components/social-proof/SocialProof";
 import PricingFAQ from "@/components/pricing/PricingFAQ";
 
 // Structured data for SEO (SoftwareApplication + Offers)
@@ -168,10 +173,22 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Execution Credits Section */}
+      {/* ROI Calculator — Highest Priority Conversion Tool */}
+      <ROICalculator />
+
+      {/* Compare to Hiring — Compelling cost comparison */}
+      <CompareToHiring />
+
+      {/* Execution Credit Calculator — Interactive usage estimator */}
+      <ExecutionCalculator />
+
+      {/* Execution Credits Explanation */}
       <div className="border-t border-gray-800">
         <ExecutionCredits />
       </div>
+
+      {/* Detailed Feature Comparison Matrix */}
+      <FeatureMatrix />
 
       {/* Marketplace Pricing Section */}
       <MarketplacePricing />
@@ -179,7 +196,10 @@ export default function PricingPage() {
       {/* Bundle Pricing Section */}
       <BundlePricing />
 
-      {/* Comparison Table */}
+      {/* Social Proof — Customer logos, testimonials, stats */}
+      <SocialProof />
+
+      {/* Legacy Comparison Table */}
       <ComparisonTable />
 
       {/* FAQ Section */}
