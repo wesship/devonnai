@@ -1,4 +1,5 @@
-import { marketplaceCategories } from "@/lib/pricing-data";
+import Link from 'next/link';
+import { marketplaceCategories } from '@/lib/pricing-data';
 
 export default function MarketplacePricing() {
   const categoryColors = [
@@ -60,7 +61,7 @@ export default function MarketplacePricing() {
         </div>
 
         <div className="mt-10 text-center">
-          <a
+          <Link
             href="/marketplace"
             className="inline-flex items-center gap-2 rounded-lg border border-cyan-500/50 px-6 py-3 text-sm font-semibold text-cyan-400 hover:bg-cyan-500/10 transition-colors"
           >
@@ -68,7 +69,7 @@ export default function MarketplacePricing() {
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
