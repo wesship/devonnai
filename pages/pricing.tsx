@@ -138,178 +138,92 @@ export default function PricingPage() {
         />
       </Head>
 
-      <div className="min-h-screen bg-gray-950 text-white">
-        {/* Navigation */}
-        <nav className="border-b border-gray-800 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-50">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                  <span className="text-sm font-bold text-white">D3</span>
-                </div>
-                <span className="text-lg font-bold text-white">
-                  D3VONN<span className="text-cyan-400">.IO</span>
-                </span>
-              </Link>
-              <div className="hidden md:flex items-center gap-6">
-                <Link
-                  href="/features"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Features
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="text-sm text-white font-medium"
-                >
-                  Pricing
-                </Link>
-                <Link
-                  href="/marketplace"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Marketplace
-                </Link>
-                <Link
-                  href="/docs"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Docs
-                </Link>
-                <a
-                  href="/signup"
-                  className="rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-400 transition-colors"
-                >
-                  Get Started
-                </a>
-              </div>
-              {/* Mobile menu button */}
-              <button className="md:hidden p-2 text-gray-400 hover:text-white" aria-label="Open menu">
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        {/* Hero Section */}
-        <section className="pt-16 pb-8 lg:pt-24 lg:pb-12">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Simple, transparent{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                pricing
-              </span>
-            </h1>
-            <p className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
-              Start free and scale as you grow. Pay only for what you use with
-              execution-based credits, or choose a plan that fits your team.
-            </p>
-          </div>
-        </section>
-
-        {/* Billing Toggle */}
-        <PricingToggle isAnnual={isAnnual} setIsAnnual={setIsAnnual} />
-
-        {/* Pricing Cards Grid */}
-        <section className="pb-16 lg:pb-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-              {pricingTiers.map((tier) => (
-                <PricingCard key={tier.id} tier={tier} isAnnual={isAnnual} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Execution Credits Section */}
-        <div className="border-t border-gray-800">
-          <ExecutionCredits />
+      {/* Hero Section */}
+      <section className="pt-16 pb-8 lg:pt-24 lg:pb-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            Simple, transparent{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              pricing
+            </span>
+          </h1>
+          <p className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
+            Start free and scale as you grow. Pay only for what you use with
+            execution-based credits, or choose a plan that fits your team.
+          </p>
         </div>
+      </section>
 
-        {/* Marketplace Pricing Section */}
-        <MarketplacePricing />
+      {/* Billing Toggle */}
+      <PricingToggle isAnnual={isAnnual} setIsAnnual={setIsAnnual} />
 
-        {/* Bundle Pricing Section */}
-        <BundlePricing />
-
-        {/* Comparison Table */}
-        <ComparisonTable />
-
-        {/* FAQ Section */}
-        <PricingFAQ />
-
-        {/* Enterprise CTA */}
-        <section className="py-16 lg:py-24 border-t border-gray-800">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
-              Need a custom solution?
-            </h2>
-            <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-              Our enterprise team will work with you to build a custom AI agent
-              deployment that fits your organization&apos;s unique requirements.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="/contact?inquiry=enterprise"
-                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-600 px-8 py-3.5 text-sm font-semibold text-white hover:from-purple-500 hover:to-cyan-500 transition-all shadow-lg shadow-purple-500/25"
-              >
-                Contact Sales
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </a>
-              <a
-                href="/docs"
-                className="inline-flex items-center gap-2 rounded-lg border border-gray-600 px-8 py-3.5 text-sm font-semibold text-gray-300 hover:border-gray-400 hover:text-white transition-colors"
-              >
-                View Documentation
-              </a>
-            </div>
+      {/* Pricing Cards Grid */}
+      <section className="pb-16 lg:pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {pricingTiers.map((tier) => (
+              <PricingCard key={tier.id} tier={tier} isAnnual={isAnnual} />
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Footer */}
-        <footer className="border-t border-gray-800 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <div className="h-6 w-6 rounded bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-white">D3</span>
-                </div>
-                <span className="text-sm font-semibold text-gray-400">
-                  D3VONN.IO
-                </span>
-              </div>
-              <p className="text-sm text-gray-500">
-                &copy; {new Date().getFullYear()} D3VONN.IO. All rights reserved.
-              </p>
-              <div className="flex gap-6">
-                <a href="/privacy" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                  Privacy
-                </a>
-                <a href="/terms" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                  Terms
-                </a>
-                <a href="/contact" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                  Contact
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
+      {/* Execution Credits Section */}
+      <div className="border-t border-gray-800">
+        <ExecutionCredits />
       </div>
+
+      {/* Marketplace Pricing Section */}
+      <MarketplacePricing />
+
+      {/* Bundle Pricing Section */}
+      <BundlePricing />
+
+      {/* Comparison Table */}
+      <ComparisonTable />
+
+      {/* FAQ Section */}
+      <PricingFAQ />
+
+      {/* Enterprise CTA */}
+      <section className="py-16 lg:py-24 border-t border-gray-800">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            Need a custom solution?
+          </h2>
+          <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+            Our enterprise team will work with you to build a custom AI agent
+            deployment that fits your organization&apos;s unique requirements.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact?inquiry=enterprise"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-600 px-8 py-3.5 text-sm font-semibold text-white hover:from-purple-500 hover:to-cyan-500 transition-all shadow-lg shadow-purple-500/25"
+            >
+              Contact Sales
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </Link>
+            <Link
+              href="/docs"
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-600 px-8 py-3.5 text-sm font-semibold text-gray-300 hover:border-gray-400 hover:text-white transition-colors"
+            >
+              View Documentation
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
