@@ -1,15 +1,26 @@
 import Head from "next/head";
+import Link from "next/link";
+import { getServiceStatuses, type ServiceStatus } from "@/lib/status";
 
-const systems = [
-  { name: "Frontend", provider: "Vercel", state: "Live" },
-  { name: "API", provider: "Railway", state: "Live" },
-  { name: "Database", provider: "Supabase", state: "Configured" },
-  { name: "Vector Memory", provider: "Pinecone", state: "Configured" },
-  { name: "Orchestrator", provider: "Hermes", state: "Active" },
-  { name: "CI/CD", provider: "GitHub Actions", state: "Tracked" },
-];
+type StatusPageProps = {
+  checkedAt: string;
+  services: ServiceStatus[];
+};
 
-export default function StatusPage() {
+export async function getServerSideProps() {
+  const services = await getServiceStatuses();
+
+  return {
+    props: {
+      checkedAt: new Date().toISOString(),
+      services,
+    },
+  };
+}
+
+export default function StatusPage({ checkedAt, services }: StatusPageProps) {
+  const hasDegraded = services.some((service) => service.state === "degraded");
+
   return (
     <>
       <Head>
@@ -24,8 +35,10 @@ export default function StatusPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">System Status</p>
             <h1 className="mt-3 text-4xl font-bold text-white sm:text-5xl">D3VONN.IO operational surface.</h1>
             <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-              This page provides a buyer-facing status overview. Connect it to live health endpoints when the public status API is ready.
+              Live-ready status overview for frontend, backend runtime, database, vector memory, orchestrator, and CI/CD.
             </p>
+            <p className={hasDegraded ? "mt-5 text-amber-300" : "mt-5 text-emerald-300"}>{hasDegraded ? "Degraded" : "Operational"}</p>
+            <p className="mt-2 text-xs text-gray-500">Last checked: {new Date(checkedAt).toLocaleString()}</p>
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-gray-800">
@@ -35,18 +48,24 @@ export default function StatusPage() {
                   <th className="px-4 py-4">System</th>
                   <th className="px-4 py-4">Provider</th>
                   <th className="px-4 py-4">State</th>
+                  <th className="px-4 py-4">Detail</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-800 bg-gray-950/60">
-                {systems.map((system) => (
-                  <tr key={system.name}>
-                    <td className="px-4 py-4 font-medium text-white">{system.name}</td>
-                    <td className="px-4 py-4 text-gray-400">{system.provider}</td>
-                    <td className="px-4 py-4"><span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300">{system.state}</span></td>
+                {services.map((service) => (
+                  <tr key={service.name}>
+                    <td className="px-4 py-4 font-medium text-white">{service.name}</td>
+                    <td className="px-4 py-4 text-gray-400">{service.provider}</td>
+                    <td className="px-4 py-4 capitalize text-cyan-300">{service.state}</td>
+                    <td className="px-4 py-4 text-gray-500">{service.detail || "No detail available"}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="mt-8 rounded-xl border border-gray-800 bg-gray-900/50 p-5 text-sm text-gray-400">
+            JSON status is available at <Link href="/api/status" className="text-cyan-300 hover:text-cyan-200">/api/status</Link>.
           </div>
         </div>
       </section>
