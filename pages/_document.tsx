@@ -12,6 +12,12 @@ export default function Document() {
         <meta name="application-name" content="D3VONN.IO" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="D3VONN" />
+        <meta name="robots" content="index,follow" />
+        <meta name="author" content="D3VONN.IO" />
+        <meta property="og:image" content="https://d3vonn.io/og-image.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content="https://d3vonn.io/og-image.svg" />
       </Head>
       <body className="antialiased">
         <Main />
