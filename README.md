@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# D3VONN.IO
 
-## Getting Started
+D3VONN.IO is an AI Business Operating System for deploying, monitoring, and controlling autonomous AI workers from one command center.
 
-First, run the development server:
+## Production surface
+
+- Homepage proof layer and command-center positioning
+- AI workforce section for Hermes, TARS, Sapphire, Guardian, Atlas, and Forge
+- Public demo route at `/demo`
+- Documentation route at `/docs`
+- Trust routes for `/security`, `/status`, `/roadmap`, and `/case-studies`
+- Legal routes for `/privacy` and `/terms`
+- Public status API at `/api/status`
+- SEO assets: `/sitemap.xml`, `/robots.txt`, `/manifest.json`, `/icon.svg`, `/og-image.svg`
+
+## Commands
 
 ```bash
+npm ci
+npm run lint
+npm run build
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+The project is configured for Vercel with `vercel.json`:
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Framework: Next.js
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Region: `iad1`
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Verification
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+GitHub Actions workflow: `.github/workflows/verify-site.yml`
 
-## Learn More
+The workflow runs:
 
-To learn more about Next.js, take a look at the following resources:
+1. `npm ci`
+2. `npm run lint`
+3. `npm run build`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Manual route verification is documented in `docs/deployment-verification.md`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Public routes
 
-## Deploy on Vercel
+- `/`
+- `/demo`
+- `/features`
+- `/pricing`
+- `/marketplace`
+- `/docs`
+- `/security`
+- `/status`
+- `/api/status`
+- `/roadmap`
+- `/case-studies`
+- `/changelog`
+- `/about`
+- `/blog`
+- `/careers`
+- `/contact`
+- `/privacy`
+- `/terms`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Safety note
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Do not claim formal certifications such as SOC 2 until the audit is complete. Use security-roadmap or SOC 2-ready language only when accurate.
