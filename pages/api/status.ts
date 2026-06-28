@@ -1,26 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getServiceStatuses, type ServiceStatus } from "@/lib/status";
 
 type StatusResponse = {
-  status: "operational";
+  status: "operational" | "degraded";
   checkedAt: string;
-  services: Array<{
-    name: string;
-    provider: string;
-    state: "operational" | "configured" | "planned";
-  }>;
+  services: ServiceStatus[];
 };
 
-export default function handler(_req: NextApiRequest, res: NextApiResponse<StatusResponse>) {
+export default async function handler(_req: NextApiRequest, res: NextApiResponse<StatusResponse>) {
+  const services = await getServiceStatuses();
+  const degraded = services.some((service) => service.state === "degraded");
+
   res.status(200).json({
-    status: "operational",
+    status: degraded ? "degraded" : "operational",
     checkedAt: new Date().toISOString(),
-    services: [
-      { name: "Frontend", provider: "Vercel", state: "operational" },
-      { name: "API", provider: "Railway / Next API", state: "operational" },
-      { name: "Database", provider: "Supabase", state: "configured" },
-      { name: "Vector Memory", provider: "Pinecone", state: "configured" },
-      { name: "Orchestrator", provider: "Hermes", state: "configured" },
-      { name: "CI/CD", provider: "GitHub Actions", state: "configured" }
-    ]
+    services,
   });
 }
