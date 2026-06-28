@@ -12,6 +12,7 @@ D3VONN.IO is an AI Business Operating System for deploying, monitoring, and cont
 - Legal routes for `/privacy` and `/terms`
 - Public status API at `/api/status`
 - SEO assets: `/sitemap.xml`, `/robots.txt`, `/manifest.json`, `/icon.svg`, `/og-image.svg`
+- Optional Plausible analytics through `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`
 
 ## Commands
 
@@ -21,6 +22,23 @@ npm run lint
 npm run build
 npm run dev
 ```
+
+## Environment
+
+Copy `.env.example` when configuring local or Vercel environments.
+
+Public client variable:
+
+- `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`
+
+Future status integration URLs:
+
+- `RAILWAY_STATUS_URL`
+- `SUPABASE_HEALTH_URL`
+- `PINECONE_HEALTH_URL`
+- `HERMES_HEARTBEAT_URL`
+
+Only public browser-safe values should use the `NEXT_PUBLIC` prefix.
 
 ## Deployment
 
